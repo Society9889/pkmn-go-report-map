@@ -1,0 +1,23 @@
+{
+  "name": "pkmn-go-report-map",
+  "version": "1.0.0",
+  "description": "Map based way to report raid activity and help track quests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Society9889/pkmn-go-report-map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Society9889/pkmn-go-report-map/issues"
+  },
+  "homepage": "https://github.com/Society9889/pkmn-go-report-map#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
