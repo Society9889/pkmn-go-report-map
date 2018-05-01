@@ -11,19 +11,19 @@ import Drawer from 'material-ui/Drawer';
 import Paper from 'material-ui/Paper';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 
+import RaidReport from './raidReport.js';
+import Map from './map.js';
+
+//routes
+import {Switch, Route, IndexRoute, Link} from 'react-router-dom';
+
 //style
 import style from './appStyle.scss';
 
 
 class Home extends React.Component {
 
-
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
-		const { classes } = this.props;
 
 		var titleStyle = {
 				flex: 1
@@ -45,11 +45,25 @@ class Home extends React.Component {
 		        </Toolbar>
 		      </AppBar>
 	       	     <div className="main-body">
-	       	     		<div className="content"></div>
+	       	     		<div className="content">
+	       	     			<Switch>
+		       	     			<Route exact path="/" component={Map}/>
+								<Route path="/raidReport" component={RaidReport}></Route>
+							</Switch>
+	       	     		</div>
 	       	     		 <Paper id='paperDrawer' className="build-alert-nav-menu">
 	       	     		 <List component="nav">
-							<ListItem button>
-					          <ListItemText primary="Test" />
+	       	     			<ListItem component={Link} to="/" button>
+					            <ListItemText primary="Map" />
+					        </ListItem>
+							<ListItem component={Link} to="/raidreport" button>
+					            <ListItemText primary="Raid Reports" />
+					        </ListItem>
+					        <ListItem button>
+					        	<ListItemText primary="Gyms" />
+					        </ListItem>
+					        <ListItem button>
+					          	<ListItemText primary="Poke Stops" />
 					        </ListItem>
 						</List>
 						</Paper>
