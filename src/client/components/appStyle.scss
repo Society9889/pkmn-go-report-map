@@ -1,7 +1,37 @@
 body {
 	margin: 0;
+	overflow-y: hidden;
 }
 
-.test {
-	background-color: red;
+.main{
+	height: 100%;
+}
+
+.pkmn-container{
+	height: 100%;
+}
+
+.main-content {
+   background-color: #eeeeee;
+   flex: 1;
+}
+
+.main-body{
+	display: flex;
+	flex: 1;
+	background-color: #edecec;
+	height: 93vh;
+}
+
+.content{
+	flex: 1;
+	margin: 20px;
+}
+
+.build-alert-nav-menu{
+	flex: 0 0 15em;
+	order: -1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
