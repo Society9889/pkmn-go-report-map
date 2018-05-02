@@ -1,6 +1,7 @@
 var firebase = require('firebase-admin'),
 	config = require('./config.js'),
-	ref = '',
+	usersRef = '',
+	gymRef = ','
 	users ={},
 	io = {},
 	room = '',
@@ -18,20 +19,32 @@ var firebaseServerClient = {
             databaseURL: config.databaseURL
         });
 
-        ref = fireApp.database().ref('Users'),
+        usersRef = fireApp.database().ref('Users');
+        gymRef = fireApp.database().ref('Gyms');
 
-        //read the past builds from firebase
-        ref.on('value', function(snapshot) {
+        usersRef.on('value', function(snapshot) {
             users = [];
             snapshot.forEach(function(urlSnapshot) {
                 users.push(urlSnapshot.val());
             });
             this.getUsers();
         }, this);
+
+        gymRef.on('value', function(snapshot) {
+            gyms = [];
+            snapshot.forEach(function(urlSnapshot) {
+                gyms.push(urlSnapshot.val());
+            });
+            this.getGyms();
+        }, this);
     },
 
     getUsers : function(){
     	this.io.to(this.room).emit('Users', users);
+    },
+
+    getGyms : function(){
+    	this.io.to(this.room).emit('Gyms', gyms);
     }
 
 }

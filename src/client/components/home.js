@@ -29,10 +29,16 @@ class Home extends React.Component {
 
 	componentDidMount(){
 		socket.on("Users", this.processUsers.bind(this));
+		socket.on("Gyms", this.processGyms.bind(this));
+		socket.emit('getGyms');
 	}
 
 	processUsers(users){
 		console.log(users);
+	}
+
+	processGyms(gyms){
+		console.log(gyms);
 	}
 
 	render() {

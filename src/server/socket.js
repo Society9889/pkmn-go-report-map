@@ -18,6 +18,11 @@ module.exports = function (io) {
 			users-=1;
 		});
 
+		socket.on('getGyms', function(){
+			console.log("Gym Informaiton requested");
+			firebase.getGyms();
+		});
+
 	});
 }
 
