@@ -10,7 +10,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from 'material-ui/Drawer';
 import Paper from 'material-ui/Paper';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import io from 'socket.io-client';
 
+//components
 import RaidReport from './raidReport.js';
 import Map from './map.js';
 
@@ -20,8 +22,18 @@ import {Switch, Route, IndexRoute, Link} from 'react-router-dom';
 //style
 import style from './appStyle.scss';
 
+//socket connection
+var socket = io.connect();
 
 class Home extends React.Component {
+
+	componentDidMount(){
+		socket.on("Users", this.processUsers.bind(this));
+	}
+
+	processUsers(users){
+		console.log(users);
+	}
 
 	render() {
 
