@@ -1,7 +1,8 @@
 import React from 'react';
 
-class Map extends React.Component {
+import {connect } from 'react-redux';
 
+class Map extends React.Component {
 
 	componentDidMount() {
 		var gyms = [
@@ -52,10 +53,17 @@ class Map extends React.Component {
 	}
 
 	render(){
+		const {gyms} = this.props;
+
+		console.log(gyms);
 		return(
 			<div className='map-cont' id='map-cont'></div>
 		)
 	}
 }
 
-export default Map;
+const mapState = store => ({
+	gyms: store.gyms.gyms
+})
+
+export default connect(mapState, {})(Map);
