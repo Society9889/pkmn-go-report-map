@@ -19,6 +19,10 @@ import Map from './map.js';
 //routes
 import {Switch, Route, IndexRoute, Link} from 'react-router-dom';
 
+//redux-actions
+import {updateGyms} from '../redux/actions/gymActions.js';
+import { connect } from 'react-redux';
+
 //style
 import style from './appStyle.scss';
 
@@ -38,7 +42,7 @@ class Home extends React.Component {
 	}
 
 	processGyms(gyms){
-		console.log(gyms);
+		this.props.updateGyms(gyms);
 	}
 
 	render() {
@@ -91,4 +95,4 @@ class Home extends React.Component {
 	}		
 }
 
-export default Home;
+export default connect(null, {updateGyms})(Home);
