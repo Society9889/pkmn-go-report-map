@@ -15,6 +15,7 @@ import io from 'socket.io-client';
 //components
 import RaidReport from './raidReport.js';
 import Map from './map.js';
+import GymReportDialog from './gymReportingDialog.js';
 
 //routes
 import {Switch, Route, IndexRoute, Link} from 'react-router-dom';
@@ -31,6 +32,12 @@ var socket = io.connect();
 
 class Home extends React.Component {
 
+	constructor(props) {
+		super(props);
+
+		this.state = { isOpen: false };
+	}
+
 	componentDidMount(){
 		socket.on("Users", this.processUsers.bind(this));
 		socket.on("Gyms", this.processGyms.bind(this));
@@ -43,6 +50,12 @@ class Home extends React.Component {
 
 	processGyms(gyms){
 		this.props.updateGyms(gyms);
+	}
+
+	openGymReportDialog(){
+		this.setState({
+			isOpen: !this.state.isOpen
+		});
 	}
 
 	render() {
@@ -81,7 +94,7 @@ class Home extends React.Component {
 							<ListItem component={Link} to="/raidreport" button>
 					            <ListItemText primary="Raid Reports" />
 					        </ListItem>
-					        <ListItem button>
+					        <ListItem button onClick={this.openGymReportDialog.bind(this)}>
 					        	<ListItemText primary="Gyms" />
 					        </ListItem>
 					        <ListItem button>
@@ -90,6 +103,8 @@ class Home extends React.Component {
 						</List>
 						</Paper>
 				 </div>
+				<GymReportDialog show={this.state.isOpen}
+								 onClose={this.openGymReportDialog.bind(this)}/>
 		    </div>
 			);
 	}		
