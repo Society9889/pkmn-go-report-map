@@ -104,7 +104,7 @@ class Home extends React.Component {
 						</Paper>
 				 </div>
 				<GymReportDialog show={this.state.isOpen}
-								 onClose={this.openGymReportDialog.bind(this)}/>
+								 onClose={this.openGymReportDialog.bind(this)} socket={socket}/>
 		    </div>
 			);
 	}		

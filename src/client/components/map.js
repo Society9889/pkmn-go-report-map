@@ -17,6 +17,7 @@ class Map extends React.Component {
 		//var markers = [];
 
 		var bedford = {lat: 42.490430, lng: -71.278493};
+		console.log('loadMap');
 
 		this.map = new google.maps.Map(document.getElementById('map-cont'), {
 			zoom: 14,
@@ -48,7 +49,8 @@ class Map extends React.Component {
 					scaledSize: new google.maps.Size(30, 30), // scaled size
 					origin: new google.maps.Point(0,0), // origin
 					anchor: new google.maps.Point(15,15) // anchor
-				}
+				},
+				map: this.map
 			});
 			marker.addListener('click', function() {
 				infowindow.setContent(this.name + '\n' + 'Is ex gym? ' + this.des);
@@ -57,8 +59,8 @@ class Map extends React.Component {
 			markers.push(marker);
 		}
 
-		var markerCluster = new MarkerClusterer(this.map, markers,
-			{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+		// var markerCluster = new MarkerClusterer(this.map, markers,
+		// 	{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 	}
 
 	render(){

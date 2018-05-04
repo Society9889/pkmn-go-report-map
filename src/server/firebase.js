@@ -45,6 +45,10 @@ var firebaseServerClient = {
 
     getGyms : function(){
     	this.io.to(this.room).emit('Gyms', gyms);
+    },
+
+    addGym: function(gym){
+        gymRef.push(gym);
     }
 
 }

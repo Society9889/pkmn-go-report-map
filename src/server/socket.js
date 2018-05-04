@@ -23,6 +23,10 @@ module.exports = function (io) {
 			firebase.getGyms();
 		});
 
+		socket.on('addGym', function(gym){
+			firebase.addGym(gym)
+		});
+
 	});
 }
 

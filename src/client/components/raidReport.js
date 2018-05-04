@@ -16,7 +16,7 @@ class RaidReport extends React.Component {
 	render() {
 	
 		return (
-			<Paper>
+			<Paper className='report-content'>
 				<Table>
 			        <TableHead>
 			          <TableRow>
