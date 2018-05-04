@@ -20,7 +20,9 @@ class Map extends React.Component {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			streetViewControl: false,
 			center: bedford,
-			minZoom: 3
+			minZoom: 3,
+			mapTypeControl: false,
+			gestureHandling: "greedy"
 		});
 	}
 
