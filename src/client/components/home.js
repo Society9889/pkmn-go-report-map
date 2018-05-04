@@ -81,10 +81,10 @@ class Home extends React.Component {
 		      </AppBar>
 	       	     <div className="main-body">
 	       	     		<div className="content">
-	       	     			<Switch>
-		       	     			<Route exact path="/" component={Map}/>
+		       	     		<Switch>
 								<Route path="/raidReport" component={RaidReport}></Route>
 							</Switch>
+							<Map/>
 	       	     		</div>
 	       	     		 <Paper id='paperDrawer' className="build-alert-nav-menu">
 	       	     		 <List component="nav">

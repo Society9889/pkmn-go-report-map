@@ -29,8 +29,8 @@ class GymReportDialog extends React.Component {
         this.state = { 
             name: '',
             isex: false,
-            lat: 0,
-            lng: 0
+            lat: '',
+            lng: ''
         };
     }
 
@@ -61,8 +61,8 @@ class GymReportDialog extends React.Component {
         this.setState({
             name: '',
             isex: false,
-            lat: 0,
-            lng: 0
+            lat: '',
+            lng: ''
         });
         this.props.onClose();
     }

@@ -2,7 +2,8 @@ import React from 'react';
 
 import {connect } from 'react-redux';
 
-var map = null;
+var map = null,
+	gymsOnMap = {};
 
 class Map extends React.Component {
 
@@ -11,13 +12,8 @@ class Map extends React.Component {
 	}
 
 	loadMap(){
-		//var gyms = [
-		//	{name: 'Flag', isex: false, pos: {lat: 42.49038, lng: -71.276022}},
-		//];
-		//var markers = [];
-
+		//TODO move this to a setting file
 		var bedford = {lat: 42.490430, lng: -71.278493};
-		console.log('loadMap');
 
 		this.map = new google.maps.Map(document.getElementById('map-cont'), {
 			zoom: 14,
@@ -33,30 +29,34 @@ class Map extends React.Component {
 
 		for(var i = 0; i < gyms.length; i++){
 
-			var contentString = 'Place to raid';
+			if(!gymsOnMap[gyms[i].name]){
+				gymsOnMap[gyms[i].name] = gyms[i];
 
-			var infowindow = new google.maps.InfoWindow({
-				content: contentString
-			});
+				var contentString = 'Place to raid';
 
-			var marker = new google.maps.Marker({
-				position: gyms[i].pos,
-				name: gyms[i].name,
-				des: gyms[i].isex,
-				icon: {
-					url: "/images/gymIcon.png",
-					labelOrigin: new google.maps.Point(15,35),
-					scaledSize: new google.maps.Size(30, 30), // scaled size
-					origin: new google.maps.Point(0,0), // origin
-					anchor: new google.maps.Point(15,15) // anchor
-				},
-				map: this.map
-			});
-			marker.addListener('click', function() {
-				infowindow.setContent(this.name + '\n' + 'Is ex gym? ' + this.des);
-				infowindow.open(this.map, this);
-			});
-			markers.push(marker);
+				var infowindow = new google.maps.InfoWindow({
+					content: contentString
+				});
+
+				var marker = new google.maps.Marker({
+					position: gyms[i].pos,
+					name: gyms[i].name,
+					des: gyms[i].isex,
+					icon: {
+						url: "/images/gymIcon.png",
+						labelOrigin: new google.maps.Point(15,35),
+						scaledSize: new google.maps.Size(30, 30), // scaled size
+						origin: new google.maps.Point(0,0), // origin
+						anchor: new google.maps.Point(15,15) // anchor
+					},
+					map: this.map
+				});
+				marker.addListener('click', function() {
+					infowindow.setContent(this.name + '\n' + 'Is ex gym? ' + this.des);
+					infowindow.open(this.map, this);
+				});
+				markers.push(marker);
+			}
 		}
 
 		// var markerCluster = new MarkerClusterer(this.map, markers,

@@ -16,6 +16,7 @@ class RaidReport extends React.Component {
 	render() {
 	
 		return (
+			<div className='full-content'>
 			<Paper className='report-content'>
 				<Table>
 			        <TableHead>
@@ -49,6 +50,7 @@ class RaidReport extends React.Component {
 			        </TableBody>
 			      </Table>
 		      </Paper>
+		      </div>
 			);
 	}		
 }
