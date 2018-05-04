@@ -35,7 +35,13 @@ class Home extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { isOpen: false };
+		this.state = { 
+			isOpen: false,
+			menuHidden: true,
+			style: {
+				display: 'none'
+			}
+		};
 	}
 
 	componentDidMount(){
@@ -58,6 +64,22 @@ class Home extends React.Component {
 		});
 	}
 
+	toggleMenu(){
+		if(this.state.menuHidden === false){
+			this.setState({
+				menuHidden: true,
+				style: {
+				display: 'none'
+			}});
+		} else {
+			this.setState(
+				{
+					menuHidden: false,
+					style:{}
+				});
+		}
+	}
+
 	render() {
 
 		var titleStyle = {
@@ -70,7 +92,7 @@ class Home extends React.Component {
 			<div className="main">
 		      <AppBar className="test" position="static">
 		        <Toolbar>
-		          <IconButton color="inherit" aria-label="Menu">
+		          <IconButton color="inherit" aria-label="Menu" onClick={this.toggleMenu.bind(this)}>
 		            <MenuIcon />
 		          </IconButton>
 		          <Typography variant="title" style={titleStyle} color="inherit">
@@ -86,7 +108,7 @@ class Home extends React.Component {
 							</Switch>
 							<Map/>
 	       	     		</div>
-	       	     		 <Paper id='paperDrawer' className="build-alert-nav-menu">
+	       	     		 <Paper id='paperDrawer' className="build-alert-nav-menu" style={this.state.style}>
 	       	     		 <List component="nav">
 	       	     			<ListItem component={Link} to="/" button>
 					            <ListItemText primary="Map" />
