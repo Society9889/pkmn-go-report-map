@@ -117,7 +117,7 @@ class Home extends React.Component {
 					            <ListItemText primary="Raid Reports" />
 					        </ListItem>
 					        <ListItem button onClick={this.openGymReportDialog.bind(this)}>
-					        	<ListItemText primary="Gyms" />
+					        	<ListItemText primary="Report a Gym" />
 					        </ListItem>
 					        <ListItem button>
 					          	<ListItemText primary="Poke Stops" />

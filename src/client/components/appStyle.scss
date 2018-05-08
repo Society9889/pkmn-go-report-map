@@ -1,6 +1,7 @@
-body {
+body, html {
 	margin: 0;
 	overflow-y: hidden;
+	height: 100%;
 }
 
 .main{
@@ -20,7 +21,7 @@ body {
 	display: flex;
 	flex: 1;
 	background-color: #edecec;
-	height: 93vh;
+	height: calc(100% - 4em);
 }
 
 .full-content{
