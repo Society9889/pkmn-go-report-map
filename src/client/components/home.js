@@ -22,6 +22,7 @@ import {Switch, Route, IndexRoute, Link} from 'react-router-dom';
 
 //redux-actions
 import {updateGyms} from '../redux/actions/gymActions.js';
+import {updateUsers} from '../redux/actions/usersActions.js';
 import { connect } from 'react-redux';
 
 //style
@@ -51,7 +52,7 @@ class Home extends React.Component {
 	}
 
 	processUsers(users){
-		console.log(users);
+		this.props.updateUsers(users);
 	}
 
 	processGyms(gyms){
